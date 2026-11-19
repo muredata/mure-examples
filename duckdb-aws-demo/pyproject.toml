@@ -1,0 +1,17 @@
+[project]
+name = "duckdemo"
+version = "0.1.0"
+description = "Deploy and operate the DuckDB 2.0 + Amazon S3 Tables (TPC-DS) demo"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.12"
+dependencies = [
+    "boto3>=1.40",
+]
+
+[project.scripts]
+duckdemo = "duckdemo.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.9,<0.14"]
+build-backend = "uv_build"

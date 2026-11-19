@@ -1,0 +1,27 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# DuckDB
+*.duckdb
+*.wal
+
+# Node
+node_modules/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+*.tfplan
+crash.log
+
+# macOS / zip junk
+.DS_Store
+__MACOSX/
+
+# Env
+.env

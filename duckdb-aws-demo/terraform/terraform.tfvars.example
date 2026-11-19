@@ -1,0 +1,21 @@
+# Copy to terraform.tfvars and edit.
+
+# Any Region with Amazon S3 Tables and CloudFront VPC origins.
+region = "eu-west-1"
+
+# Receives the Cognito invitation with a temporary password.
+admin_email = "you@example.com"
+
+# Public IPs allowed through AWS WAF. Find yours with: curl -s https://checkip.amazonaws.com
+allowed_cidrs = ["203.0.113.10/32"]
+
+# OPTIONAL lets the admin enrol an authenticator app; ON makes MFA mandatory.
+mfa_configuration = "OPTIONAL"
+
+# Optional overrides (defaults shown):
+# project             = "duckdemo"
+# ui_cpu              = 8192    # 8 vCPU
+# ui_memory           = 32768   # 32 GiB
+# ui_duckdb_memory_limit = "24GB"
+# nat_gateway_per_az  = false
+# origin_read_timeout = 60

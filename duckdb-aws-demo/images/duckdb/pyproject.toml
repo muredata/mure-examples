@@ -1,0 +1,12 @@
+[project]
+name = "duckdb-s3tables-app"
+version = "0.1.0"
+description = "DuckDB 2.0 UI server and TPC-DS loader for Amazon S3 Tables (runs on AWS Fargate)"
+license = "Apache-2.0"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "duckdb==2.0.0",
+]
+
+[tool.uv]
+package = false

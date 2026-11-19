@@ -1,0 +1,21 @@
+{
+  "name": "duckdemo-edge-auth",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Lambda@Edge viewer-request function: Cognito login in front of the DuckDB UI (cognito-at-edge).",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "esbuild src/index.mjs --bundle --platform=node --target=node24 --format=cjs --minify --legal-comments=external --external:@aws-sdk/* --outfile=dist/index.js",
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "cognito-at-edge": "1.5.5"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-secrets-manager": "3.1170.0",
+    "esbuild": "0.28.2"
+  }
+}
