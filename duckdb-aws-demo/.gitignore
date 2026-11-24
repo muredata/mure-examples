@@ -25,3 +25,8 @@ __MACOSX/
 
 # Env
 .env
+
+# Build outputs
+edge-auth/dist/
+terraform/.build/
+terraform/images.auto.tfvars.json

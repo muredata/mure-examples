@@ -71,12 +71,24 @@ The loader writes Iceberg **V2** tables (readable by Amazon Athena too), ZSTD-co
 - A Region that offers [Amazon S3 Tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-regions-quotas.html)
   and [CloudFront VPC origins](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-vpc-origins.html#vpc-origins-supported-regions).
 - Local tools: [uv](https://docs.astral.sh/uv/), Terraform ≥ 1.10, Docker with `buildx`
-  (builds `linux/arm64` images; native on Apple silicon), Node.js ≥ 20 with npm.
+  (builds `linux/arm64` images; native on Apple silicon, emulated and slower on x86), Node.js ≥ 20 with npm.
+
+Credentials from `aws login`, SSO and static keys all work (the CLI depends on `boto3[crt]`,
+which `aws login` sessions need).
+
+On **Windows with WSL**: enable Docker Desktop's WSL integration for your distro, and if the
+repository lives under `/mnt/c`, keep Terraform's providers on the Linux disk or `terraform apply`
+can fail with `timeout while waiting for plugin to start`:
+
+```bash
+mkdir -p ~/.terraform.d/plugin-cache
+export TF_PLUGIN_CACHE_DIR=~/.terraform.d/plugin-cache
+```
 
 ## Deploy
 
 ```bash
-cd duckdb-s3tables-demo
+cd duckdb-aws-demo
 
 # 1. Configure: Region, admin email and the public IPs allowed to open the UI
 cp terraform/terraform.tfvars.example terraform/terraform.tfvars
@@ -229,7 +241,7 @@ Known trade-offs of this demo, and what to change for production:
 ## Repository layout
 
 ```
-duckdb-s3tables-demo/
+duckdb-aws-demo/
 ├── pyproject.toml, uv.lock        # the `duckdemo` CLI (uv)
 ├── src/duckdemo/cli.py
 ├── terraform/                     # all infrastructure
